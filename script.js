@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm && formStatus) {
         const submitButton = contactForm.querySelector('button[type="submit"]');
-        const issueUrl = (contactForm.dataset.issueUrl || 'https://github.com/roykabilisim/royka/issues/new').trim();
+        const endpoint = (contactForm.dataset.endpoint || '').trim();
 
         contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -460,42 +460,56 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalButtonHtml = submitButton ? submitButton.innerHTML : '';
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.innerHTML = 'Açılıyor...';
+                submitButton.innerHTML = 'Gönderiliyor...';
             }
 
             formStatus.className = 'form-status visible loading';
-            formStatus.textContent = 'GitHub sayfası açılıyor...';
+            formStatus.textContent = 'Mesajınız gönderiliyor...';
+
+            if (!endpoint) {
+                formStatus.className = 'form-status visible error';
+                formStatus.textContent = 'Form gönderim adresi henüz ayarlanmamış. Apps Script URL’sini ekleyin.';
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonHtml;
+                }
+                return;
+            }
 
             const formData = new FormData(contactForm);
-            const payload = {
-                name: formData.get('name')?.toString().trim() || 'Belirtilmedi',
-                email: formData.get('email')?.toString().trim() || '',
-                service: formData.get('service')?.toString().trim() || 'Genel',
-                message: formData.get('message')?.toString().trim() || ''
-            };
+
+            // Honeypot check: real users never fill this hidden field.
+            // If it has a value, silently pretend success without hitting the endpoint.
+            if ((formData.get('website') || '').toString().trim() !== '') {
+                formStatus.className = 'form-status visible success';
+                formStatus.textContent = 'Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağız.';
+                contactForm.reset();
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonHtml;
+                }
+                return;
+            }
+
+            formData.set('subject', 'ROYKA iletişim formu');
 
             try {
-                const issueBody = [
-                    '## Yeni iletişim formu',
-                    '',
-                    `Adı: ${payload.name}`,
-                    `E-posta: ${payload.email}`,
-                    `Hizmet: ${payload.service}`,
-                    '',
-                    'Mesaj:',
-                    payload.message
-                ].join('\n');
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    body: formData
+                });
 
-                const targetUrl = `${issueUrl}?title=${encodeURIComponent(`Yeni iletişim formu: ${payload.name}`)}&body=${encodeURIComponent(issueBody)}&labels=contact-form`;
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
 
-                window.open(targetUrl, '_blank', 'noopener,noreferrer');
                 formStatus.className = 'form-status visible success';
-                formStatus.textContent = 'GitHub sayfası açıldı. Lütfen issue oluşturup göndermeyi tamamlayın.';
+                formStatus.textContent = 'Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağız.';
                 contactForm.reset();
             } catch (error) {
                 console.error('Form submission failed:', error);
                 formStatus.className = 'form-status visible error';
-                formStatus.textContent = 'GitHub sayfası açılamadı. Lütfen tekrar deneyin.';
+                formStatus.textContent = 'Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin.';
             } finally {
                 if (submitButton) {
                     submitButton.disabled = false;

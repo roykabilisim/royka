@@ -419,8 +419,7 @@
                     </div>
 
                     <div class="glass-card contact-form-card">
-                        <!-- GitHub Secrets ile çalışan güvenli form akışı -->
-                        <form id="contact-form" action="#" method="POST" data-issue-url="https://github.com/roykabilisim/royka/issues/new">
+                        <form id="contact-form" action="#" method="POST" data-endpoint="https://script.google.com/macros/s/AKfycbyOlV6eV4yi6opE5fbjBQwkSg-ZmmkZxABAQelKN_FEXQsyX3HFHWNF2q3jZzyl9SHd/exec">
                             <div class="form-group">
                                 <label for="name" data-i18n="form.name">Adınız / Şirketiniz</label>
                                 <input type="text" id="name" name="name" required placeholder="İsminizi yazın" autocomplete="name">
@@ -443,6 +442,11 @@
                             <div class="form-group">
                                 <label for="message" data-i18n="form.message">Mesajınız</label>
                                 <textarea id="message" name="message" rows="4" required placeholder="İhtiyacınızı kısaca anlatın" autocomplete="off"></textarea>
+                            </div>
+
+                            <div class="form-group honeypot-field" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                             </div>
 
                             <div class="form-group consent-group">

@@ -1,0 +1,16 @@
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Dependencies (only relevant if you add a Node build step later)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
