@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROYKA — Continuous Software Engineering & Partnership</title>
+    
+    <!-- Meta & SEO -->
+    <meta name="description" content="ROYKA helps businesses maintain, improve and grow their software through long-term engineering partnerships. Built once. Improved forever.">
+    <meta name="keywords" content="software support, website maintenance, custom software, java spring boot, software training, royka">
+    <meta name="author" content="ROYKA">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="ROYKA — Built Once. Improved Forever.">
+    <meta property="og:description" content="Continuous Software Engineering & Long-Term Partnership.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#050816">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Custom Cursor & Effects -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="custom-cursor-follower" id="cursor-follower"></div>
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-text">ROYKA</span>
+                <span class="logo-dot">.</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link" data-i18n="nav.about">Hakkımızda</a>
+                <a href="#services" class="nav-link" data-i18n="nav.services">Hizmetler</a>
+                <a href="#why-annual" class="nav-link" data-i18n="nav.why_annual">Neden Destek?</a>
+                <a href="#technologies" class="nav-link" data-i18n="nav.tech">Teknolojiler</a>
+                <a href="#faq" class="nav-link" data-i18n="nav.faq">SSS</a>
+                <a href="#contact" class="nav-link btn-nav" data-i18n="nav.contact">İletişime Geç</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Language Switcher -->
+                <button class="lang-switch" id="lang-toggle" aria-label="Language Switcher">
+                    <span class="lang-option active" data-lang="tr">TR</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-aurora"></div>
+            <div class="hero-grid"></div>
+
+            <div class="container hero-container">
+                <div class="hero-badges">
+                    <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="hero.badge1">Yazılım Bakımı</span></span>
+                    <span class="hero-badge"><i class="fa-solid fa-code"></i> <span data-i18n="hero.badge2">Özel Geliştirme</span></span>
+                    <span class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="hero.badge3">Teknik Eğitim</span></span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span data-i18n="hero.title_p1">Bir Kez İnşa Et.</span><br>
+                    <span class="gradient-text" data-i18n="hero.title_p2">Sonsuza Dek Geliştir.</span>
+                </h1>
+
+                <p class="hero-subtitle" data-i18n="hero.subtitle">
+                    ROYKA, uzun vadeli mühendislik ortaklıkları aracılığıyla işletmelerin yazılımlarını sürdürmelerine, geliştirmelerine ve büyütmelerine yardımcı olur.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn btn-primary magnetic-btn" data-i18n="hero.cta_primary">
+                        Yıllık Desteği Başlat <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#services" class="btn btn-secondary magnetic-btn" data-i18n="hero.cta_secondary">
+                        Yeni Proje Geliştir
+                    </a>
+                </div>
+
+                <a href="#services" class="hero-tertiary-link" data-i18n="hero.cta_tertiary">
+                    Eğitim & Danışmanlık hizmetlerimizi de inceleyin <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <a href="#trust" class="scroll-indicator" aria-label="Scroll Down">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </a>
+        </section>
+
+        <!-- Trust Section -->
+        <section class="trust-section" id="trust">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 class="section-title" data-i18n="trust.title">Sadece Yazılımcı Değil, Teknoloji Ortağı</h2>
+                    <p class="section-subtitle" data-i18n="trust.subtitle">Geliştirme sürecimizin ve uzun vadeli ortaklığımızın temelini oluşturan ilkelerimiz.</p>
+                </div>
+
+                <div class="grid grid-4 trust-grid">
+                    <div class="glass-card trust-card tilt-card">
+                        <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3 data-i18n="trust.card1_title">Şeffaf İletişim</h3>
+                        <p data-i18n="trust.card1_desc">Süreçlerimizin her adımı açıktır. Gizli maliyetler veya anlaşılmayan teknik karmaşalar yoktur.</p>
+                    </div>
+
+                    <div class="glass-card trust-card tilt-card">
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3 data-i18n="trust.card2_title">Mühendislik Standartları</h3>
+                        <p data-i18n="trust.card2_desc">Sürdürülebilir, güvenli, test edilebilir ve ölçeklenebilir kod mimarisi inşa ederiz.</p>
+                    </div>
+
+                    <div class="glass-card trust-card tilt-card">
+                        <div class="card-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+                        <h3 data-i18n="trust.card3_title">Sürekli Destek</h3>
+                        <p data-i18n="trust.card3_desc">Canlıya alım sonrası kaybolmayız. Yazılımınızın her gün sorunsuz çalışmasını sağlarız.</p>
+                    </div>
+
+                    <div class="glass-card trust-card tilt-card">
+                        <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <h3 data-i18n="trust.card4_title">Uzun Vadeli Ortaklık</h3>
+                        <p data-i18n="trust.card4_desc">İşinizi anlar, hedeflerinize uyum sağlar ve harici bir yazılım ekibiniz gibi çalışırız.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story / Philosophy Section -->
+        <section class="story-section" id="about">
+            <div class="container">
+                <div class="glass-card story-card">
+                    <div class="story-grid">
+                        <div class="story-text">
+                            <span class="badge-tag" data-i18n="story.tag">Felsefemiz</span>
+                            <h2 class="section-title" data-i18n="story.title">Yazılıma Farklı Bir Bakış Aşılamak</h2>
+                            <p data-i18n="story.p1">Çoğu şirket yazılımı teslim edilip biten bir ürün olarak görür. Ancak teknoloji her gün değişir, tarayıcılar güncellenir, güvenlik tehditleri gelişir ve işinizin ihtiyaçları başkalaşır.</p>
+                            <p data-i18n="story.p2">ROYKA, "Daha büyük değil, daha iyi" felsefesiyle kuruldu. Amacımız kısa süreli projeler bitirip ortadan kaybolmak değil, şirketlerin teknolojisine uzun yıllar yön veren güvenilir mühendislik ortağı olmaktır.</p>
+                        </div>
+                        <div class="story-stats">
+                            <div class="stat-box">
+                                <span class="stat-value" data-i18n="story.stat1_value">Birebir</span>
+                                <span class="stat-label" data-i18n="story.stat1">Kurucu ile Doğrudan İletişim</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value" data-i18n="story.stat2_value">Clean Code</span>
+                                <span class="stat-label" data-i18n="story.stat2">Test Edilebilir & Sürdürülebilir Mimari</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value" data-i18n="story.stat3_value">~8 Saat</span>
+                                <span class="stat-label" data-i18n="story.stat3">Ortalama Geri Dönüş Süresi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge-tag" data-i18n="services.tag">Hizmetlerimiz</span>
+                    <h2 class="section-title" data-i18n="services.title">İhtiyacınıza Özel Mühendislik Çözümleri</h2>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Featured Service: Annual Support -->
+                    <div class="glass-card service-card featured-service tilt-card">
+                        <div class="service-badge-featured" data-i18n="services.featured_badge">Öne Çıkan Hizmet</div>
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fa-solid fa-sliders"></i></div>
+                            <div>
+                                <h3 data-i18n="services.s1_title">Yıllık Yazılım Desteği & Bakımı</h3>
+                                <p class="service-lead" data-i18n="services.s1_subtitle">Sistemlerinizin her zaman güvenli, hızlı ve güncel kalmasını sağlayan sürekli mühendislik ortaklığı.</p>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <ul class="feature-list">
+                                <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1_f1">Web sitesi ve uygulama bakımı</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1_f2">Hata (Bug) tespiti ve hızlı onarım</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1_f3">Yeni özellik (Feature) geliştirme</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1_f4">Performans ve veritabanı optimizasyonu</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1_f5">Güvenlik güncellemeleri & SSL takibi</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1_f6">Sunucu, Domain & Yedekleme yönetimi</span></li>
+                            </ul>
+                        </div>
+                        <div class="service-footer">
+                            <a href="#contact" class="btn btn-primary magnetic-btn" data-i18n="services.s1_cta">Anlaşma Yapalım</a>
+                        </div>
+                    </div>
+
+                    <!-- Software Education -->
+                    <div class="glass-card service-card tilt-card">
+                        <div class="service-badge-tag" data-i18n="services.s3_badge">Uzmanlık Alanımız</div>
+                        <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h3 data-i18n="services.s3_title">Yazılım & Kurumsal Eğitim</h3>
+                        <p data-i18n="services.s3_desc">Ekibinizi modern yazılım mimarileri, Java Spring Boot, mikrohizmetler ve en iyi kodlama pratikleri konusunda üst seviyeye taşıyoruz.</p>
+                        <ul class="feature-list small">
+                            <li><i class="fa-solid fa-angle-right"></i> Gerçek Dünya Senaryoları</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Birebir Mentörlük</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Kurumsal Mühendislik Eğitimleri</li>
+                        </ul>
+                    </div>
+
+                    <!-- Custom Software Development -->
+                    <div class="glass-card service-card tilt-card">
+                        <div class="service-icon"><i class="fa-solid fa-code-merge"></i></div>
+                        <h3 data-i18n="services.s2_title">Özel Yazılım Geliştirme</h3>
+                        <p data-i18n="services.s2_desc">Kurumsal ihtiyaçlarınıza tam uyumlu sıfırdan modern web uygulamaları, mikrohizmetler, REST API'ler ve yönetim panelleri inşa ediyoruz.</p>
+                        <ul class="feature-list small">
+                            <li><i class="fa-solid fa-angle-right"></i> Modern Web & Dashboard</li>
+                            <li><i class="fa-solid fa-angle-right"></i> CRM & ERP Sistemleri</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Mikrohizmet & API Mimarisi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Annual Support (Timeline) -->
+        <section class="why-annual-section" id="why-annual">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="badge-tag" data-i18n="why_annual.tag">Döngüsel Mühendislik</span>
+                    <h2 class="section-title" data-i18n="why_annual.title">Neden Yıllık Destek?</h2>
+                    <p class="section-subtitle" data-i18n="why_annual.subtitle">Yazılım biten bir süreç değil, sürekli yaşayan bir organizmadır.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-node"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="timeline-content glass-card">
+                            <h4 data-i18n="timeline.step1_title">1. Yayınlama (Launch)</h4>
+                            <p data-i18n="timeline.step1_desc">Sistem güvenli ve test edilmiş şekilde canlıya alınır.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="timeline-content glass-card">
+                            <h4 data-i18n="timeline.step2_title">2. İzleme (Monitor)</h4>
+                            <p data-i18n="timeline.step2_desc">Sunucu yükü, hatalar ve performans 7/24 takip edilir.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node"><i class="fa-solid fa-wrench"></i></div>
+                        <div class="timeline-content glass-card">
+                            <h4 data-i18n="timeline.step3_title">3. Onarım (Fix)</h4>
+                            <p data-i18n="timeline.step3_desc">Olası aksaklıklar ve hatalar anında müdahale ile çözülür.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node"><i class="fa-solid fa-arrows-to-eye"></i></div>
+                        <div class="timeline-content glass-card">
+                            <h4 data-i18n="timeline.step4_title">4. Geliştirme (Improve)</h4>
+                            <p data-i18n="timeline.step4_desc">Kullanıcı geri bildirimlerine göre yeni modüller eklenir.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node"><i class="fa-solid fa-shield"></i></div>
+                        <div class="timeline-content glass-card">
+                            <h4 data-i18n="timeline.step5_title">5. Güvenlik (Secure)</h4>
+                            <p data-i18n="timeline.step5_desc">Sistem yamaları uygulanır, açıklar kapatılır.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node"><i class="fa-solid fa-layer-group"></i></div>
+                        <div class="timeline-content glass-card">
+                            <h4 data-i18n="timeline.step6_title">6. Ölçekleme (Scale)</h4>
+                            <p data-i18n="timeline.step6_desc">Büyüyen kullanıcı trafiğine göre mimari güçlendirilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="tech-section" id="technologies">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="badge-tag" data-i18n="tech.tag">Teknoloji Yığınımız</span>
+                    <h2 class="section-title" data-i18n="tech.title">Modern & Ölçeklenebilir Araçlar</h2>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
+                    <div class="tech-card"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span></div>
+                    <div class="tech-card"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
+                    <div class="tech-card"><i class="fa-brands fa-java"></i><span>Java</span></div>
+                    <div class="tech-card"><i class="fa-solid fa-leaf"></i><span>Spring Boot</span></div>
+                    <div class="tech-card"><i class="fa-brands fa-react"></i><span>React</span></div>
+                    <div class="tech-card"><i class="fa-solid fa-database"></i><span>PostgreSQL</span></div>
+                    <div class="tech-card"><i class="fa-solid fa-server"></i><span>MongoDB</span></div>
+                    <div class="tech-card"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
+                    <div class="tech-card"><i class="fa-brands fa-git-alt"></i><span>Git</span></div>
+                    <div class="tech-card"><i class="fa-solid fa-cloud"></i><span>REST APIs</span></div>
+                    <div class="tech-card"><i class="fa-solid fa-cubes"></i><span>Microservices</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="badge-tag" data-i18n="faq.tag">Merak Edilenler</span>
+                    <h2 class="section-title" data-i18n="faq.title">Sıkça Sorulan Sorular</h2>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-item glass-card">
+                        <button class="faq-question">
+                            <span data-i18n="faq.q1">Yıllık Yazılım Desteği neleri kapsar?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a1">Sitenizin/uygulamanızın düzenli yedeklenmesi, güvenlik güncellemeleri, karşılaşılan hataların onarılması, küçük yeni özellik talepleri ve sunucu/domain takibi bu hizmet kapsamındadır.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-card">
+                        <button class="faq-question">
+                            <span data-i18n="faq.q2">Mevcut bir sitemizi/uygulamamızı devralabilir misiniz?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a2">Evet. Kod yapınızı ve altyapınızı inceledikten sonra gerekli iyileştirme raporunu çıkarır ve bakım/geliştirme sürecini üstleniriz.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-card">
+                        <button class="faq-question">
+                            <span data-i18n="faq.q3">Tepki ve müdahale süreleriniz (SLA) nasıldır?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a3">Kritik ve sistemi durduran acil durumlarda öncelikli müdahale sağlar, rutin taleplerinizi ise planlanan çalışma takviminde hızla hayata geçiririz.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-card">
+                        <button class="faq-question">
+                            <span data-i18n="faq.q4">Sıfırdan bir proje geliştirmek ne kadar sürer?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a4">Projenin kapsamına, gereksinimlerine ve entegrasyon ihtiyacına göre değişir. Detaylı analiz aşamasından sonra net bir yol haritası ve takvim sunarız.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="badge-tag" data-i18n="contact.tag">İletişim</span>
+                        <h2 class="section-title" data-i18n="contact.title">Teknolojinizi Birlikte Büyütelim</h2>
+                        <p data-i18n="contact.desc">İster yıllık destek anlaşması ister yeni bir proje için olsun; projelerinizi konuşmak üzere bize mesaj gönderebilirsiniz.</p>
+
+                        <div class="info-list">
+                            <div class="info-item">
+                                <i class="fa-solid fa-envelope"></i>
+                                <div>
+                                    <span class="info-label">E-Posta</span>
+                                    <a href="mailto:info@royka.com" class="info-val">info@royka.com</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <span class="info-label">Konum</span>
+                                    <span class="info-val">İstanbul, Türkiye</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card contact-form-card">
+                        <!-- Formspree / FormSubmit entegrasyonuna uygun form -->
+                        <form id="contact-form" action="#" method="POST" data-apps-script-url="https://script.google.com/macros/s/AKfycbyOlV6eV4yi6opE5fbjBQwkSg-ZmmkZxABAQelKN_FEXQsyX3HFHWNF2q3jZzyl9SHd/exec">
+                            <div class="form-group">
+                                <label for="name" data-i18n="form.name">Adınız / Şirketiniz</label>
+                                <input type="text" id="name" name="name" required placeholder="İsminizi yazın" autocomplete="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" data-i18n="form.email">E-Posta Adresiniz</label>
+                                <input type="email" id="email" name="email" required placeholder="E-posta adresinizi yazın" autocomplete="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service" data-i18n="form.service">İlgilendiğiniz Hizmet</label>
+                                <select id="service" name="service">
+                                    <option value="Yıllık Yazılım Desteği" data-i18n="form.opt1">Yıllık Yazılım Desteği</option>
+                                    <option value="Yazılım Eğitimi / Danışmanlık" data-i18n="form.opt3">Yazılım Eğitimi / Danışmanlık</option>
+                                    <option value="Özel Yazılım Geliştirme" data-i18n="form.opt2">Özel Yazılım Geliştirme</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" data-i18n="form.message">Mesajınız</label>
+                                <textarea id="message" name="message" rows="4" required placeholder="İhtiyacınızı kısaca anlatın" autocomplete="off"></textarea>
+                            </div>
+
+                            <div class="form-group consent-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="consent" name="consent" required>
+                                    <span data-i18n="form.consent">
+                                        <a href="#" class="privacy-trigger">Gizlilik Politikası</a>'nı okudum, kişisel verilerimin bu form kapsamında işlenmesini kabul ediyorum.
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+
+                            <button type="submit" class="btn btn-primary btn-full magnetic-btn" data-i18n="form.submit">
+                                Mesajı Gönder <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="modal-overlay" id="privacy-modal" aria-hidden="true">
+        <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+            <button class="modal-close" id="privacy-modal-close" aria-label="Kapat">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-content">
+                <h2 id="privacy-modal-title">Gizlilik Politikası</h2>
+                <p>Bu form üzerinden ilettiğiniz kişisel veriler, sadece bizimle iletişime geçme amacına uygun olarak işlenecektir. Verileriniz, size geri dönüş yapmak ve isteklerinizi değerlendirmek için kullanılacaktır.</p>
+                <p>Verileriniz üçüncü taraflarla paylaşılmayacak ve yalnızca ROYKA tarafından saklanacaktır. Formu göndererek bu koşulları kabul etmiş olursunuz.</p>
+                <button class="btn btn-secondary modal-close-btn" id="privacy-modal-close-btn">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="brand-logo">
+                    <span class="logo-text">ROYKA</span><span class="logo-dot">.</span>
+                </a>
+                <p data-i18n="footer.desc">Continuous Software Engineering & Long-Term Partnership.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#about" data-i18n="nav.about">Hakkımızda</a>
+                <a href="#services" data-i18n="nav.services">Hizmetler</a>
+                <a href="#faq" data-i18n="nav.faq">SSS</a>
+                <a href="#contact" data-i18n="nav.contact">İletişim</a>
+                    <a href="#" class="privacy-trigger" data-i18n="footer.privacy">Gizlilik Politikası</a>
+                <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 ROYKA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+</body>
+</html>
+
