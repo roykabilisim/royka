@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm && formStatus) {
         const submitButton = contactForm.querySelector('button[type="submit"]');
-        const appsScriptUrl = (contactForm.dataset.appsScriptUrl || '').trim();
+        const issueUrl = (contactForm.dataset.issueUrl || 'https://github.com/roykabilisim/royka/issues/new').trim();
 
         contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             formStatus.className = 'form-status visible loading';
-            formStatus.textContent = 'Mesaj gönderiliyor...';
+            formStatus.textContent = 'GitHub sayfası açılıyor...';
 
             const formData = new FormData(contactForm);
             const payload = {
@@ -475,29 +475,27 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                if (!appsScriptUrl || appsScriptUrl.includes('YOUR_DEPLOYMENT_ID')) {
-                    throw new Error('Apps Script URL not configured');
-                }
+                const issueBody = [
+                    '## Yeni iletişim formu',
+                    '',
+                    `Adı: ${payload.name}`,
+                    `E-posta: ${payload.email}`,
+                    `Hizmet: ${payload.service}`,
+                    '',
+                    'Mesaj:',
+                    payload.message
+                ].join('\n');
 
-                const response = await fetch(appsScriptUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                    },
-                    body: new URLSearchParams(payload).toString()
-                });
+                const targetUrl = `${issueUrl}?title=${encodeURIComponent(`Yeni iletişim formu: ${payload.name}`)}&body=${encodeURIComponent(issueBody)}&labels=contact-form`;
 
-                if (!response.ok) {
-                    throw new Error('Apps Script gönderimi başarısız');
-                }
-
+                window.open(targetUrl, '_blank', 'noopener,noreferrer');
                 formStatus.className = 'form-status visible success';
-                formStatus.textContent = 'Mesajınız alındı. En kısa sürede dönüş yapacağız.';
+                formStatus.textContent = 'GitHub sayfası açıldı. Lütfen issue oluşturup göndermeyi tamamlayın.';
                 contactForm.reset();
             } catch (error) {
                 console.error('Form submission failed:', error);
                 formStatus.className = 'form-status visible error';
-                formStatus.textContent = 'Mesaj gönderilemedi. Lütfen Google Apps Script URL’sini ayarlayıp tekrar deneyin.';
+                formStatus.textContent = 'GitHub sayfası açılamadı. Lütfen tekrar deneyin.';
             } finally {
                 if (submitButton) {
                     submitButton.disabled = false;
