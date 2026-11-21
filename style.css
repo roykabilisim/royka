@@ -1562,3 +1562,7 @@ body { min-height: 100svh; }
     .hero-copy > *, .hero-visual { animation: none; }
     .btn-primary::after { display: none; }
 }
+
+/* 18. Hero headline is now a full sentence: slightly smaller scale, comfortable measure */
+.hero-title { font-size: clamp(2rem, 1rem + 3.4vw, 3.5rem); letter-spacing: -0.025em; }
+.hero-title .gradient-text { display: inline; }
