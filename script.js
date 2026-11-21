@@ -107,6 +107,23 @@ document.addEventListener('DOMContentLoaded', () => {
             "form.message": "Mesajınız",
             "form.consent": "<a href=\"#\" class=\"privacy-trigger\">Gizlilik Politikası</a>'nı okudum, kişisel verilerimin bu form kapsamında işlenmesini kabul ediyorum.",
             "form.submit": "Mesajı Gönder",
+            "a11y.skip": "Ana içeriğe geç",
+            "services.s3_l1": "Gerçek Dünya Senaryoları",
+            "services.s3_l2": "Birebir Mentörlük",
+            "services.s3_l3": "Kurumsal Mühendislik Eğitimleri",
+            "services.s2_l1": "Modern Web & Dashboard",
+            "services.s2_l2": "CRM & ERP Sistemleri",
+            "services.s2_l3": "Mikrohizmet & API Mimarisi",
+            "contact.email_label": "E-Posta",
+            "contact.location_label": "Konum",
+            "contact.location_value": "İstanbul, Türkiye",
+            "form.ph_name": "İsminizi yazın",
+            "form.ph_email": "E-posta adresinizi yazın",
+            "form.ph_message": "İhtiyacınızı kısaca anlatın",
+            "form.sending": "Gönderiliyor...",
+            "form.msg_sending": "Mesajınız gönderiliyor...",
+            "form.msg_ok": "Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağız.",
+            "form.msg_err": "Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin.",
             
             "footer.desc": "Sürekli Mühendislik & Uzun Vadeli Ortaklık.",
             "footer.privacy": "Gizlilik Politikası"
@@ -212,6 +229,23 @@ document.addEventListener('DOMContentLoaded', () => {
             "form.message": "Your Message",
             "form.consent": "I have read the <a href=\"#\" class=\"privacy-trigger\">Privacy Policy</a> and consent to my personal data being processed for this form.",
             "form.submit": "Send Message",
+            "a11y.skip": "Skip to main content",
+            "services.s3_l1": "Real-World Scenarios",
+            "services.s3_l2": "One-on-One Mentoring",
+            "services.s3_l3": "Corporate Engineering Training",
+            "services.s2_l1": "Modern Web & Dashboards",
+            "services.s2_l2": "CRM & ERP Systems",
+            "services.s2_l3": "Microservice & API Architecture",
+            "contact.email_label": "Email",
+            "contact.location_label": "Location",
+            "contact.location_value": "Istanbul, Türkiye",
+            "form.ph_name": "Enter your name",
+            "form.ph_email": "Enter your email address",
+            "form.ph_message": "Briefly describe your need",
+            "form.sending": "Sending...",
+            "form.msg_sending": "Sending your message...",
+            "form.msg_ok": "Your message was sent successfully. We will get back to you soon.",
+            "form.msg_err": "Message could not be sent. Please try again later.",
             
             "footer.desc": "Continuous Software Engineering & Long-Term Partnership.",
             "footer.privacy": "Privacy Policy"
@@ -219,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     let currentLang = localStorage.getItem('royka_lang') || 'tr';
+    const tr = (k) => (translations[currentLang] && translations[currentLang][k]) || '';
 
     const switchLanguage = (lang) => {
         currentLang = lang;
@@ -257,105 +292,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply saved language on start
     switchLanguage(currentLang);
 
-    /* --- 2. Custom Cursor & Follower --- */
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
-    
-    if (cursor && follower && window.innerWidth > 768) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-            follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        });
-
-        const hoverables = document.querySelectorAll('a, button, .glass-card, input, select, textarea');
-        hoverables.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                follower.style.width = '54px';
-                follower.style.height = '54px';
-                follower.style.backgroundColor = 'rgba(0, 229, 255, 0.08)';
-            });
-            el.addEventListener('mouseleave', () => {
-                follower.style.width = '36px';
-                follower.style.height = '36px';
-                follower.style.backgroundColor = 'transparent';
-            });
-        });
-    }
-
     /* --- 3. Scroll Progress & Navbar Effects --- */
     const progressBar = document.getElementById('scroll-progress');
     const navbar = document.getElementById('navbar');
 
-    window.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    let scrollTick = false;
+    const onScroll = () => {
+        const winScroll = document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-
-        if (progressBar) progressBar.style.width = scrolled + '%';
-        if (navbar) {
-            if (window.scrollY > 40) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        }
-    });
-
-    /* --- 4. Hero Section Canvas Animation (Glowing Particles) --- */
-    const canvas = document.getElementById('hero-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        const resizeCanvas = () => {
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
-        };
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = (Math.random() - 0.5) * 0.4;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-
-            draw() {
-                ctx.fillStyle = `rgba(0, 229, 255, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 60; i++) {
-            particles.push(new Particle());
-        }
-
-        const animateParticles = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        };
-
-        animateParticles();
-    }
+        if (progressBar && height > 0) progressBar.style.width = (winScroll / height) * 100 + '%';
+        if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 40);
+        scrollTick = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!scrollTick) { scrollTick = true; requestAnimationFrame(onScroll); }
+    }, { passive: true });
+    onScroll();
 
     /* --- 5. Mouse Light Tracking on Glass Cards --- */
     const cards = document.querySelectorAll('.glass-card');
@@ -372,12 +324,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- 6. FAQ Accordion --- */
     const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
+    faqItems.forEach((item, idx) => {
         const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        question.setAttribute('aria-expanded', 'false');
+        question.setAttribute('aria-controls', 'faq-a' + idx);
+        answer.id = 'faq-a' + idx;
+        answer.setAttribute('role', 'region');
         question.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
-            faqItems.forEach(i => i.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
+            faqItems.forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+            }
         });
     });
 
@@ -386,21 +349,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
 
     if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.className = 'fa-solid fa-xmark';
-            } else {
-                icon.className = 'fa-solid fa-bars';
-            }
-        });
-
-        navMenu.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
-            });
+        const setMenu = (open) => {
+            navMenu.classList.toggle('active', open);
+            mobileToggle.setAttribute('aria-expanded', String(open));
+            mobileToggle.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        };
+        mobileToggle.addEventListener('click', () => setMenu(!navMenu.classList.contains('active')));
+        navMenu.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) { setMenu(false); mobileToggle.focus(); }
         });
     }
 
@@ -412,10 +369,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const privacyModalClose = document.getElementById('privacy-modal-close');
     const privacyModalCloseBtn = document.getElementById('privacy-modal-close-btn');
 
+    let lastFocus = null;
     const openPrivacyModal = () => {
         if (privacyModal) {
+            lastFocus = document.activeElement;
             privacyModal.classList.add('active');
             privacyModal.setAttribute('aria-hidden', 'false');
+            if (privacyModalClose) privacyModalClose.focus();
         }
     };
 
@@ -423,8 +383,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (privacyModal) {
             privacyModal.classList.remove('active');
             privacyModal.setAttribute('aria-hidden', 'true');
+            if (lastFocus && lastFocus.focus) lastFocus.focus();
         }
     };
+
+    document.addEventListener('keydown', (e) => {
+        if (!privacyModal || !privacyModal.classList.contains('active')) return;
+        if (e.key === 'Escape') { closePrivacyModal(); return; }
+        if (e.key === 'Tab') {
+            const f = privacyModal.querySelectorAll('button, a[href]');
+            if (!f.length) return;
+            const first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+    });
 
     document.addEventListener('click', (event) => {
         const trigger = event.target.closest('.privacy-trigger');
@@ -460,15 +433,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalButtonHtml = submitButton ? submitButton.innerHTML : '';
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.innerHTML = 'Gönderiliyor...';
+                submitButton.innerHTML = tr('form.sending');
             }
 
             formStatus.className = 'form-status visible loading';
-            formStatus.textContent = 'Mesajınız gönderiliyor...';
+            formStatus.textContent = tr('form.msg_sending');
 
             if (!endpoint) {
                 formStatus.className = 'form-status visible error';
-                formStatus.textContent = 'Form gönderim adresi henüz ayarlanmamış. Apps Script URL’sini ekleyin.';
+                formStatus.textContent = tr('form.msg_err');
                 if (submitButton) {
                     submitButton.disabled = false;
                     submitButton.innerHTML = originalButtonHtml;
@@ -482,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // If it has a value, silently pretend success without hitting the endpoint.
             if ((formData.get('website') || '').toString().trim() !== '') {
                 formStatus.className = 'form-status visible success';
-                formStatus.textContent = 'Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağız.';
+                formStatus.textContent = tr('form.msg_ok');
                 contactForm.reset();
                 if (submitButton) {
                     submitButton.disabled = false;
@@ -504,12 +477,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 formStatus.className = 'form-status visible success';
-                formStatus.textContent = 'Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağız.';
+                formStatus.textContent = tr('form.msg_ok');
                 contactForm.reset();
             } catch (error) {
                 console.error('Form submission failed:', error);
                 formStatus.className = 'form-status visible error';
-                formStatus.textContent = 'Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin.';
+                formStatus.textContent = tr('form.msg_err');
             } finally {
                 if (submitButton) {
                     submitButton.disabled = false;
@@ -517,6 +490,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+
+    /* --- 9. Scroll reveal (CSS-only animation, class toggled once) --- */
+    const revealEls = document.querySelectorAll('.section-header, .trust-card, .service-card, .stat-box, .story-text, .timeline-item, .tech-card, .faq-item, .contact-info, .contact-form-card');
+    revealEls.forEach(el => el.classList.add('reveal'));
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => io.observe(el));
+    } else {
+        revealEls.forEach(el => el.classList.add('in-view'));
     }
 
 });
