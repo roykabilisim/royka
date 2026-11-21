@@ -28,6 +28,50 @@
     
     --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* --- Design tokens (v2) — new components use these; legacy names above stay as aliases --- */
+    /* Surfaces & text */
+    --surface-1: #0B1124;
+    --surface-2: #111A33;
+    --border-strong: #5B6690;           /* form/control boundaries, >= 3:1 on --bg-dark */
+    --on-brand: #050816;                /* text on the #4F7CFF→#00E5FF gradient (>= 5:1) */
+    --danger: #FF7A7A;
+    --focus-ring: var(--accent);
+
+    /* Typography scale (fluid) */
+    --fs-display: clamp(2.25rem, 1.1rem + 4.6vw, 4.25rem);
+    --fs-h2: clamp(1.75rem, 1.2rem + 2.2vw, 2.5rem);
+    --fs-h3: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+    --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+    --fs-body: 1rem;
+    --fs-small: 0.875rem;
+    --lh-tight: 1.15;
+    --lh-body: 1.6;
+
+    /* Spacing (4px base) */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --section-y: clamp(4rem, 3rem + 5vw, 7rem);
+
+    /* Elevation */
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-glow: 0 4px 24px var(--primary-glow);
+
+    /* Motion */
+    --dur-fast: 150ms;
+    --dur: 250ms;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Layers */
+    --z-nav: 1000;
+    --z-modal: 10010;
 }
 
 /* 2. Reset & Global Styles */
@@ -70,7 +114,22 @@ button, input, select, textarea {
     color: inherit;
     background: none;
     border: none;
+}
+
+/* Visible keyboard focus (WCAG 2.4.7). Mouse clicks don't show the ring. */
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
     outline: none;
+}
+
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
+    outline-offset: 2px;
 }
 
 /* 3. Custom Cursor & Progress Bar */
@@ -1211,3 +1270,26 @@ button, input, select, textarea {
     .custom-cursor, .custom-cursor-follower { display: none; }
 }
 
+/* 15. Reduced motion — respect the user's OS setting */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .glass-card:hover,
+    .btn:hover,
+    .tech-card:hover {
+        transform: none;
+    }
+
+    .hero-aurora,
+    #hero-canvas,
+    .custom-cursor,
+    .custom-cursor-follower {
+        display: none;
+    }
+}
